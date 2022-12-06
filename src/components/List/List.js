@@ -10,7 +10,10 @@ function List(props) {
   const task = list.tasks
   return (
     <div class="list">
-      <header>{list.title}</header>
+      <header class="header_board">
+        <p>{list.title}</p>
+        <p>...</p>
+      </header>
       <ul>
       {task.map((task, index) => <Task key={ index } task={task} />)}
         {/* <Task/> */}

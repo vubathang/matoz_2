@@ -11,7 +11,7 @@
 
 .list header {
   background-color: var(--list_bg_color);
-  color: #333;
+
   padding: 0 8px;
   padding-left: 15px;
   height: var(--column-header-height);
@@ -21,6 +21,15 @@
   /* border: 1px solid; */
   border-top-left-radius: var(--column-border-radius) ;
   border-top-right-radius: var(--column-border-radius) ;
+}
+
+.list header > p {
+  color: #333;
+}
+
+.header_board {
+  display: flex;
+  justify-content: space-between;
 }
 
 .list ul {
@@ -48,3 +57,4 @@
   /* font-size: 16px; */
   /* border: 1px solid; */
 }
+
