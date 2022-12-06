@@ -58,3 +58,19 @@
   /* border: 1px solid; */
 }
 
+.footer-action {
+  margin-left: var(--gap);
+  cursor: pointer;
+}
+
+.footer-action:hover{
+  color: darkblue;
+}
+
+.footer-action:hover .add_task{
+  color: darkblue;
+}
+
+.add_task {
+  margin-bottom: 2px;
+}
