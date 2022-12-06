@@ -85,6 +85,7 @@ function BoardContent() {
               class="input-enter-new-list"
               value = {newListTitle}
               onChange={onNewListTitleChange}
+              onKeyDown={event => (event.key === 'Enter') && onNewListTitleChange}
             />
             <Button 
               as="input" 
@@ -96,7 +97,6 @@ function BoardContent() {
           </div>
           }
         </div>
-        
       </div>
     </main>
   )

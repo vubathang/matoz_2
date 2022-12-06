@@ -1,17 +1,39 @@
-import React from "react";
+import React, {useState, useEffect, useCallback} from "react";
 
 import "./List.css";
 
 import Task from 'components/Task/Task';
+import {Form} from 'react-bootstrap'
 
 function List(props) {
 
   const { list } = props
+
   const task = list.tasks
+  const [listTitle, setListTitle] = useState('')
+  const handleListChangeTitle = useCallback(
+    (e) => {
+      setListTitle(e.target.value)
+    },
+    []
+  )
+  useEffect(() => {
+    setListTitle(list.title)
+  }, [list.title])
+
   return (
     <div class="list">
       <header class="header_board">
-        <p>{list.title}</p>
+        <div class="list-title">
+          <Form.Control 
+            size="sm" 
+            type="text"
+            class="content-editable"
+            value = {listTitle}
+            onChange={handleListChangeTitle}
+            onKeyDown={event => (event.key === 'Enter') && handleListChangeTitle}
+          />
+        </div>
       </header>
       <ul>
       {task.map((task, index) => <Task key={ index } task={task} />)}
