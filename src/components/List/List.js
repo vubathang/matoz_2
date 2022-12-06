@@ -12,7 +12,6 @@ function List(props) {
     <div class="list">
       <header class="header_board">
         <p>{list.title}</p>
-        <p>...</p>
       </header>
       <ul>
       {task.map((task, index) => <Task key={ index } task={task} />)}
