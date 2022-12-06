@@ -11,7 +11,6 @@
 
 .list header {
   background-color: var(--list_bg_color);
-
   padding: 0 8px;
   padding-left: 15px;
   height: var(--column-header-height);
@@ -23,7 +22,7 @@
   border-top-right-radius: var(--column-border-radius) ;
 }
 
-.list header > p {
+.list-title {
   color: #333;
 }
 
@@ -74,3 +73,22 @@
 .add_task {
   margin-bottom: 2px;
 }
+
+.list-title {
+}
+
+.form-control,
+.form-control:active,
+.form-control:focus,
+.form-control:focus:active {
+  background-color: inherit;
+  border: none;
+  padding: none;
+  box-shadow: none;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* .form-control:focus {
+  background-color: white;
+} */
