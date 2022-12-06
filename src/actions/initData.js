@@ -28,6 +28,16 @@ export const initData = {
             { id: 'task-5',board_Id: 'board-1',list_Id: 'list-2',title: 'Lieu rang anh co con thay em' },
             { id: 'task-6',board_Id: 'board-1',list_Id: 'list-2',title: 'Quen loi mat roi' }
           ]
+        },
+        {
+          id: 'list-3',
+          board_Id: 'board-1',
+          title: 'Lyric3',
+          tasks: [
+            { id: 'task-20', board_Id: 'board-1', list_Id: 'list-2', title: 'Neu nhu anh di ve phia do' },
+            { id: 'task-21',board_Id: 'board-1',list_Id: 'list-2',title: 'Lieu rang anh co con thay em' },
+            { id: 'task-22',board_Id: 'board-1',list_Id: 'list-2',title: 'Quen loi mat roi' }
+          ]
         }
       ]
     }

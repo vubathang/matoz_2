@@ -1,5 +1,6 @@
 @import '_setting.css';
 
+
 .main-container {
   grid-area: main;
   padding: 20px 20px;
@@ -18,24 +19,53 @@
   max-height: 100%;
 }
 
+.form-add-another-list {
+  margin-left: var(--gap);
+}
+
 .add-another-list {
   min-width: 250px;
   height: 36px;
   line-height: 32px;
-  padding: 4px 0 4px 15px;
+  padding: 4px 0 4px 0px;
   cursor: pointer;
-  margin-left: var(--gap);
+  
   font-size: 16px;
   font-weight: bold;
   background-color: red;
   border-radius: 5px;
-  padding-left: 50px;
+  /* padding-left: 50px; */
+}
+
+.add-another-list > .icon {
+  padding-left: 15px;
 }
 
 .add-another-list:hover {
   background-color: blue;
 }
 
+.enter-new-list {
+  min-width: 250px;
+}
 
+.input-enter-new-list {
+  /* display: none; */
+  width: 250px;
+  max-width: 250px;
+  height: 36px;
+  padding: 4px 0 4px 0px;
+  margin-top: 10px;
+}
 
+.trash-icon {
+  margin-left: 5px;
+  font-size: 20;
+  font-weight: bold;
+  cursor: pointer;
+  color: red;
+}
 
+.trash-icon:hover {
+  color: brown;
+}
