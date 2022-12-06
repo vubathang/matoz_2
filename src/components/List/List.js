@@ -4,21 +4,16 @@ import "./List.css";
 
 import Task from 'components/Task/Task';
 
-function List() {
+function List(props) {
+
+  const { list } = props
+  const task = list.tasks
   return (
     <div class="list">
-      <header>List 1</header>
+      <header>{list.title}</header>
       <ul>
-        <Task/>
-        <Task/>
-        <Task/>
-        <Task/>
-        <Task/>
-        <Task/>
-        <Task/>
-        <Task/>
-        <Task/>
-        <Task/>
+      {task.map((task, index) => <Task key={ index } task={task} />)}
+        {/* <Task/> */}
         {/* <li>Em đã yêu một người có ước mơ</li>
         <li>Mơ điều làm em thấy hoang mang lo sợ</li>
         <li>Sợ yêu một người không phải như em đã từng</li>

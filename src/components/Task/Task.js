@@ -2,9 +2,12 @@ import React from "react";
 
 import "./Task.css"
 
-function Task() {
+function Task(props) {
+  const { task } = props
   return(
-    <li>Em đã yêu một người có ước mơ</li>
+    <li>
+      {task.title}
+    </li>
   )
 }
 
