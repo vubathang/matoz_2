@@ -1,0 +1,9 @@
+@import '_setting.css';
+
+.list ul li {
+  background-color: white;
+  padding: var(--gap);
+  margin-bottom: 10px;
+  border-radius: var(--task-border-radius);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
