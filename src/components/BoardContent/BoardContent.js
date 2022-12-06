@@ -24,6 +24,10 @@ function BoardContent() {
       <div class="list-columns">
         {/* <p class="font-weight-bold font24">WORKSPACES</p> */}
         {lists.map((list, index) => <List key={ index } list={list} />)}
+        <div class="add-another-list">
+          <span class="material-symbols-outlined icon ">add</span>
+          Add new list
+        </div>
       </div>
     </main>
   )

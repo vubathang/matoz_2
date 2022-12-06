@@ -25,7 +25,13 @@ function List(props) {
         <li>Vẫn yêu dù cho có cô đơn</li>
         <li>Dù cho anh không của riêng em sau này</li> */}
       </ul>
-      <footer>Add another task</footer>
+      <footer>
+        <div class="footer-action">
+          <span class="material-symbols-outlined icon add_task">add</span>
+          Add another task
+        </div>
+
+        </footer>
     </div>
   )
 }
