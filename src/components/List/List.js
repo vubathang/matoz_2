@@ -4,10 +4,11 @@ import "./List.css";
 
 import Task from 'components/Task/Task';
 import {Form} from 'react-bootstrap'
+import {saveNewListTitle} from 'utilities/contentEditable'
 
 function List(props) {
 
-  const { list } = props
+  const { list, onUpdateList } = props
 
   const task = list.tasks
   const [listTitle, setListTitle] = useState('')
@@ -21,6 +22,22 @@ function List(props) {
     setListTitle(list.title)
   }, [list.title])
 
+  const deleteList = () => {
+    const newList = {
+      ...list,
+      _destroy: true
+    }
+    onUpdateList(newList)
+    console.log(newList);
+  }
+  const onNewListTitleBlur = () => {
+    
+    const newList = {
+      ...list,
+      title: listTitle
+    }
+    onUpdateList(newList)
+  }
   return (
     <div class="list">
       <header class="header_board">
@@ -31,9 +48,11 @@ function List(props) {
             class="content-editable"
             value = {listTitle}
             onChange={handleListChangeTitle}
-            onKeyDown={event => (event.key === 'Enter') && handleListChangeTitle}
+            onBlur={onNewListTitleBlur}
+            onKeyDown={saveNewListTitle}
           />
         </div>
+        <span class="material-symbols-outlined trash-icon" onClick = {deleteList}>delete</span>
       </header>
       <ul>
       {task.map((task, index) => <Task key={ index } task={task} />)}
