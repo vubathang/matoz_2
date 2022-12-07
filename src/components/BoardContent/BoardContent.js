@@ -19,6 +19,7 @@ function BoardContent() {
     []
   )
 
+
   useEffect(() => {
     const boardFromDb = initData.boards.find(board => board.id === 'board-1')
     if (boardFromDb) {
@@ -61,11 +62,32 @@ function BoardContent() {
     toggleOpenNewListForm()
   }
 
+  const onUpdateList = (newListToUpdate) => {
+    const listIdToUpdate = newListToUpdate.id
+
+    let newLists = [...lists]
+    const listIndexToUpdate = newLists.findIndex(i => i.id === listIdToUpdate)
+    console.log(listIndexToUpdate);
+    if(newListToUpdate._destroy) {
+      // destroy
+      newLists.splice(listIndexToUpdate, 1)
+    }
+    else {
+      // update
+      newLists.splice(listIndexToUpdate, 1, newListToUpdate)
+    }
+    setLists(newLists)
+    let newBoardAfterDelList = {...board}
+    newBoardAfterDelList.lists = newLists
+    setBoard(newBoardAfterDelList)
+    console.log(newLists);
+    
+  }
   return (
     <main class="main-container">
       <div class="list-columns">
         {/* <p class="font-weight-bold font24">WORKSPACES</p> */}
-        {lists.map((list, index) => <List key={ index } list={list} />)}
+        {lists.map((list, index) => <List key={ index } list={list} onUpdateList={onUpdateList}/>)}
 
 
 

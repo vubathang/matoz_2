@@ -89,6 +89,10 @@
   font-weight: inherit;
 }
 
+.list .trash-icon {
+  margin-top: 15px;
+  color: white;
+}
 /* .form-control:focus {
   background-color: white;
 } */
