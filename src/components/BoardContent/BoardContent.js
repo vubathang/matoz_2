@@ -74,20 +74,21 @@ function BoardContent() {
     }
     else {
       // update
+      console.log(newListToUpdate)
       newLists.splice(listIndexToUpdate, 1, newListToUpdate)
     }
     setLists(newLists)
     let newBoardAfterDelList = {...board}
     newBoardAfterDelList.lists = newLists
     setBoard(newBoardAfterDelList)
-    console.log(newLists);
     
   }
+
   return (
     <main class="main-container">
       <div class="list-columns">
         {/* <p class="font-weight-bold font24">WORKSPACES</p> */}
-        {lists.map((list, index) => <List key={ index } list={list} onUpdateList={onUpdateList}/>)}
+        {lists.map((list, index) => <List key={ index } list={list} onUpdateList={onUpdateList} />)}
 
 
 
