@@ -1,9 +1,11 @@
 import React, {useState, useEffect, useCallback} from "react";
+import { cloneDeep } from 'lodash'
+
 
 import "./List.css";
 
 import Task from 'components/Task/Task';
-import {Form} from 'react-bootstrap'
+import {Form, Button} from 'react-bootstrap'
 import {saveNewListTitle} from 'utilities/contentEditable'
 
 function List(props) {
@@ -12,6 +14,7 @@ function List(props) {
 
   const task = list.tasks
   const [listTitle, setListTitle] = useState('')
+  const [openNewTask, setOpenNewTask] = useState(false)
   const handleListChangeTitle = useCallback(
     (e) => {
       setListTitle(e.target.value)
@@ -36,6 +39,36 @@ function List(props) {
       ...list,
       title: listTitle
     }
+    onUpdateList(newList)
+  }
+
+  const toggleNewTaskForm = () => {
+    setOpenNewTask(!openNewTask)
+    setNewTask('')
+  }
+  const [newTask, setNewTask] = useState('')
+  const onNewTask =  (e) => {
+    setNewTask(e.target.value)
+  }
+  const addNewTask = () => {
+    if (!newTask) {
+      toggleNewTaskForm()
+      return
+    }
+    const newTaskToAdd = {
+      id: (Math.random().toString(36).substring(2, 5)),
+      boardId: list.boardId,
+      list_Id: list.id,
+      title: newTask.trim(),
+    }
+
+    console.log(list)
+    let newList = cloneDeep(list)
+    
+    newList.tasks.push(newTaskToAdd)
+
+    console.log(newList)
+    toggleNewTaskForm()
     onUpdateList(newList)
   }
   return (
@@ -67,12 +100,30 @@ function List(props) {
         <li>Dù cho anh không của riêng em sau này</li> */}
       </ul>
       <footer>
-        <div class="footer-action">
-          <span class="material-symbols-outlined icon add_task">add</span>
-          Add another task
-        </div>
+        {!openNewTask &&
+          <div class="footer-action" onClick={toggleNewTaskForm}>
+            <span class="material-symbols-outlined icon add_task">add</span>
+            Add another task
+          </div>
+        }
+        { openNewTask &&
+          <div class="enter-new-task" >
+            <Form.Control 
+              size="sm" 
+              type="text-area" 
+              rows = '3'
+              placeholder="Enter new task ..." 
+              class="input-enter-new-task"
+              value = {newTask}
+              onChange={onNewTask}
+              onKeyDown={event => (event.key === 'Enter') && addNewTask()}
+            />
+            <span class="material-symbols-outlined trash-icon" onClick = {toggleNewTaskForm}>delete</span>
+          </div>
+        }
 
-        </footer>
+
+      </footer>
     </div>
   )
 }
