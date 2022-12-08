@@ -28,7 +28,7 @@
   margin-top: 15px;
   font-size: 20px;
   font-weight: 700;
-  /* color: #FFD9C0; */
+  color: #D6E4E5;;
 }
 
 .sidebar-list {
@@ -41,6 +41,7 @@
 
 .sidebar-list-item {
   padding: 20px 20px 20px 20px;
+  color: #D6E4E5;
 }
 
 .sidebar-list-item:hover {
