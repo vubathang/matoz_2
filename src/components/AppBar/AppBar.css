@@ -3,7 +3,7 @@
 .header {
   grid-area: header;
   height: 70px;
-  background-color: #ffffff;
+  background-color: #DEF5E5;
   display: flex;
   align-items: center;
   justify-content: space-between;

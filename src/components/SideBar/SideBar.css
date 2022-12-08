@@ -28,12 +28,15 @@
   margin-top: 15px;
   font-size: 20px;
   font-weight: 700;
+  /* color: #FFD9C0; */
 }
 
 .sidebar-list {
   padding: 0;
   margin-top: 15px;
   list-style-type: none;
+  
+
 }
 
 .sidebar-list-item {
@@ -58,4 +61,21 @@
 .sidebar-reponsive {
   display: inline! important;
   position: absolute;
+}
+
+.color_light {
+  /* color: #FFD9C0; */
+  color: #FFFBC1;
+}
+
+.white {
+  color: white;
+}
+
+.grandient {
+  color: lightcoral;
+}
+
+.home {
+  color: lightblue;
 }

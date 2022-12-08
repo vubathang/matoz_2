@@ -3,7 +3,7 @@
 
 :root {
   /* --list_bg_color : #ebecf0; */
-  --list_bg_color : red;
+  --list_bg_color : #D2DAFF;
   --column-header-height: 36px;
   --column-footer-height: 36px;
   --column-border-radius: 7px;
