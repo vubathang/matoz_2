@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>MATOZ</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css"/>    
+        <body>
+        <div class="modal">
+            <div class="modal-container">
+                <header class="modal-header">
+                    <h1 class="text-2">Tạo tài khoản</h1>
+                </header>
+                <div class="modal-body">
+                    <form onsubmit="signup()">
+                        <div class="modal-head_body">
+                            <!-- Tên tài khoản -->
+                            <label for="name" class="modal-label">
+                                Nhập Tên Tài Khoản:
+                            </label>
+                            <div class="input__field">
+                                <input id="name" type="text" class="modal-input" placeholder="Username"> 
+
+                            </div>
+                    
+                            <!-- Mật khẩu -->
+                            <label for="password" class="modal-label">
+                                Nhập Mật Khẩu:
+                            </label>
+                            <div class="input__field">
+                                <input id="password" type="password" class="modal-input" placeholder="password">
+                                <!-- <i onclick="myfunction()" class="fa-regular fa-eye"></i> -->
+                            </div>
+
+                            <label for="cfpassword" class="modal-label">
+                                Xác Nhận Mật Khẩu:
+                            </label>
+                            <div class="input__field">
+                                <input id="cfpassword" type="password" class="modal-input" placeholder="cfpassword"> 
+                                <!-- <i onclick="myfunction()" class="fa-regular fa-eye"></i> -->
+                            </div>
+
+                            <!-- Tên email -->
+                            <label for="Email" class="modal-label">
+                                Nhập Email:
+                            </label>
+                            <div class="input__field">
+                                <input id="Email" type="text" class="modal-input" placeholder="Email">
+                            </div>
+                                               
+                            <!-- Số điện thoại -->
+                            <label for="sdt" class="modal-label">
+                                Nhập SĐT:
+                            </label>
+                            <div class="input__field">
+                                <input id="sdt" type="text" class="modal-input" placeholder="Phone Number">
+                            </div>
+                    </div>
+                    
+                    <div class="modal-footer_body">
+                          <button class="btn btn-signup" id="modal-dang_ky">Đăng Ký</button>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                    </form>
+                
+                <footer class="modal-footer">
+                   <!-- <p class="modal-reset">Quay lại <a href="">Đăng nhập</a></p>  -->
+                </footer>
+            </div>
+        </div>
+
+        <script src="./index.js"></script>
+    </body>
+</html>
