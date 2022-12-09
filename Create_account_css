@@ -1,0 +1,134 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(91,209,215);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.modal-container {
+    background: #fff;
+    width: 450px;
+    max-height: 59vh;
+    min-height: 613px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 8px 8px 8px 15px;
+
+}
+
+.modal-header-0 {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-header-1 {
+    display: flex;
+    justify-content: center;
+    bottom: 20px;
+}
+
+.modal-header-2 {
+    display: flex;
+    justify-content: center;
+}
+
+h1.text-1 {
+    justify-content: center;
+    display: flex;
+    font-size: 50px;
+    margin-top: 22px;
+}
+
+h1.text-2 {
+    justify-content: center;
+    display: flex;
+    font-size: 35px;
+    margin-top: 18px;
+}
+
+
+.modal-body{
+    padding: 10px;
+}
+
+.modal-head_body {
+    font-size: 20px;
+}
+
+label.modal-label {
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+input.modal-input {
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+.input__field {
+    margin-top: 7px;
+    position: relative;
+}
+
+input#password {
+    -webkit-text-security: disc;
+}
+
+/* i.fa-regular.fa-eye {
+    position: absolute;
+    cursor: pointer;
+    top: 20%;
+    right: 19px;
+} */
+
+input#cfpassword {
+    -webkit-text-security: disc;
+}
+
+button#modal-dang_ky:hover {
+    opacity: 0.9;
+}
+
+button#modal-dang_ky {
+    background: rgb(112, 208, 219);
+    border: none;
+    border-radius: 40px;
+    width: 100%;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+p.modal-reset {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 35px;
+}
+
+p.modal-reset a {
+    color: rgb(112, 208, 219);
+}
