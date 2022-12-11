@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useCallback} from "react";
 import { cloneDeep } from 'lodash'
 
-
 import "./List.css";
 
 import Task from 'components/Task/Task';
@@ -58,7 +57,7 @@ function List(props) {
     const newTaskToAdd = {
       id: (Math.random().toString(36).substring(2, 5)),
       boardId: list.boardId,
-      list_Id: list.id,
+      list_Id: list._id,
       title: newTask.trim(),
     }
 

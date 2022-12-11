@@ -5,7 +5,7 @@ import "./BoardContent.css";
 
 import List from 'components/List/List';
 
-import { initData } from 'actions/initData'
+import { fetchBoardDetails } from "actions/ApiCall";
 
 function BoardContent() {
   const [board, setBoard] = useState({})
@@ -21,12 +21,13 @@ function BoardContent() {
 
 
   useEffect(() => {
-    const boardFromDb = initData.boards.find(board => board.id === 'board-1')
-    if (boardFromDb) {
-      setBoard(boardFromDb)
+    const boardId = '6391cd5795920b972e1c6dc3'
+    fetchBoardDetails(boardId)
+      .then(board => {
+        setBoard(board)
+        setLists(board.lists, '_id')
+      })
 
-      setLists(boardFromDb.lists)
-    }
   }, [])
   const toggleOpenNewListForm = () => {
     setOpenNewListForm(!openNewListForm)
@@ -39,7 +40,7 @@ function BoardContent() {
 
     const newListToAdd = {
       id: (Math.random().toString(36).substring(2, 5)),
-      boardId: board.id,
+      boardId: board._id,
       title: newListTitle.trim(),
       tasks: []
     }
@@ -63,10 +64,10 @@ function BoardContent() {
   }
 
   const onUpdateList = (newListToUpdate) => {
-    const listIdToUpdate = newListToUpdate.id
+    const listIdToUpdate = newListToUpdate._id
 
     let newLists = [...lists]
-    const listIndexToUpdate = newLists.findIndex(i => i.id === listIdToUpdate)
+    const listIndexToUpdate = newLists.findIndex(i => i._id === listIdToUpdate)
     console.log(listIndexToUpdate);
     if(newListToUpdate._destroy) {
       // destroy
@@ -100,24 +101,24 @@ function BoardContent() {
             </div>
           }
           {openNewListForm &&
-          <div class="enter-new-list">
-            <Form.Control 
-              size="sm" 
-              type="text" 
-              placeholder="Enter new list ..." 
-              class="input-enter-new-list"
-              value = {newListTitle}
-              onChange={onNewListTitleChange}
-              onKeyDown={event => (event.key === 'Enter') && onNewListTitleChange}
-            />
-            <Button 
-              as="input" 
-              type="button" 
-              value="Enter"
-              onClick={addNewList}
-            />{' '}
-            <span class="material-symbols-outlined trash-icon" onClick = {deleteTitle}>delete</span>
-          </div>
+            <div class="enter-new-list">
+              <Form.Control 
+                size="sm" 
+                type="text" 
+                placeholder="Enter new list ..." 
+                class="input-enter-new-list"
+                value = {newListTitle}
+                onChange={onNewListTitleChange}
+                onKeyDown={e => (e.key === 'Enter') && onNewListTitleChange}
+              />
+              <Button 
+                as="input" 
+                type="button" 
+                value="Enter"
+                onClick={addNewList}
+              />{' '}
+              <span class="material-symbols-outlined trash-icon" onClick = {deleteTitle}>delete</span>
+            </div>
           }
         </div>
       </div>
