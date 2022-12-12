@@ -6,10 +6,11 @@ import "./List.css";
 import Task from 'components/Task/Task';
 import {Form, Button} from 'react-bootstrap'
 import {saveNewListTitle} from 'utilities/contentEditable'
+import {createNewTask, updateList} from 'actions/ApiCall'
 
 function List(props) {
 
-  const { list, onUpdateList } = props
+  const { list, onUpdateListState } = props
 
   const task = list.tasks
   const [listTitle, setListTitle] = useState('')
@@ -29,8 +30,7 @@ function List(props) {
       ...list,
       _destroy: true
     }
-    onUpdateList(newList)
-    console.log(newList);
+    onUpdateListState(newList)
   }
   const onNewListTitleBlur = () => {
     
@@ -38,7 +38,11 @@ function List(props) {
       ...list,
       title: listTitle
     }
-    onUpdateList(newList)
+    updateList(newList._id, newList)
+      .then(updatedList => {
+        onUpdateListState(updatedList)
+      })
+    
   }
 
   const toggleNewTaskForm = () => {
@@ -55,20 +59,19 @@ function List(props) {
       return
     }
     const newTaskToAdd = {
-      id: (Math.random().toString(36).substring(2, 5)),
       boardId: list.boardId,
-      list_Id: list._id,
+      listId: list._id,
       title: newTask.trim(),
     }
 
-    console.log(list)
-    let newList = cloneDeep(list)
-    
-    newList.tasks.push(newTaskToAdd)
-
-    console.log(newList)
-    toggleNewTaskForm()
-    onUpdateList(newList)
+    createNewTask(newTaskToAdd)
+      .then(task => {
+        let newList = cloneDeep(list)
+        
+        newList.tasks.push(task)
+        toggleNewTaskForm()
+        onUpdateListState(newList)
+      })
   }
   return (
     <div class="list">

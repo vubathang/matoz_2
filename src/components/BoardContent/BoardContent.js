@@ -5,7 +5,7 @@ import "./BoardContent.css";
 
 import List from 'components/List/List';
 
-import { fetchBoardDetails } from "actions/ApiCall";
+import { fetchBoardDetails, createNewList } from "actions/ApiCall";
 
 function BoardContent() {
   const [board, setBoard] = useState({})
@@ -39,23 +39,23 @@ function BoardContent() {
     }
 
     const newListToAdd = {
-      id: (Math.random().toString(36).substring(2, 5)),
       boardId: board._id,
-      title: newListTitle.trim(),
-      tasks: []
+      title: newListTitle.trim()
     }
 
-    let newList = [...lists]
-    newList.push(newListToAdd)
-
-    let newBoard = {...board}
-    newBoard.lists = newList
-
-    setLists(newList)
-    setBoard(newBoard)
-
-    setNewListTitle('')
-    toggleOpenNewListForm()
+    createNewList(newListToAdd)
+      .then(list => {
+        let newList = [...lists]
+        newList.push(list)
+    
+        let newBoard = {...board}
+        newBoard.lists = newList
+    
+        setLists(newList)
+        setBoard(newBoard)
+        setNewListTitle('')
+        toggleOpenNewListForm()
+      })
   }
 
   const deleteTitle = () => {
@@ -63,35 +63,29 @@ function BoardContent() {
     toggleOpenNewListForm()
   }
 
-  const onUpdateList = (newListToUpdate) => {
+  const onUpdateListState = (newListToUpdate) => {
     const listIdToUpdate = newListToUpdate._id
-
     let newLists = [...lists]
     const listIndexToUpdate = newLists.findIndex(i => i._id === listIdToUpdate)
-    console.log(listIndexToUpdate);
     if(newListToUpdate._destroy) {
       // destroy
       newLists.splice(listIndexToUpdate, 1)
     }
     else {
       // update
-      console.log(newListToUpdate)
       newLists.splice(listIndexToUpdate, 1, newListToUpdate)
     }
     setLists(newLists)
     let newBoardAfterDelList = {...board}
     newBoardAfterDelList.lists = newLists
     setBoard(newBoardAfterDelList)
-    
   }
 
   return (
     <main class="main-container">
       <div class="list-columns">
         {/* <p class="font-weight-bold font24">WORKSPACES</p> */}
-        {lists.map((list, index) => <List key={ index } list={list} onUpdateList={onUpdateList} />)}
-
-
+        {lists.map((list, index) => <List key={ index } list={list} onUpdateListState={onUpdateListState} />)}
 
         <div class="form-add-another-list">
           {!openNewListForm &&
