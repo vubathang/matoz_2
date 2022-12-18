@@ -1,0 +1,27 @@
+@import '_setting.css';
+
+.modal, .form, .button {
+  font-size: 16px;
+}
+
+.form-control {
+  margin-bottom: unset;
+}
+
+.modal-lg, .modal-xl {
+  --bs-modal-width: 600px;
+}
+
+.card {
+  height: 150px;
+  /* max-height: 200px; */
+  overflow-y: auto;
+}
+
+.commentHeader > .form-control {
+  border: 1px solid #000;
+}
+
+.modal-title {
+  font-size: 18px;
+}
