@@ -15,7 +15,13 @@ export const updateList = async (id, data) => {
   const request = await axios.put(`${API_ROOT}/v1/lists/${id}`, data)
   return request.data
 }
+
 export const createNewTask = async (data) => {
   const request = await axios.post(`${API_ROOT}/v1/tasks`, data)
+  return request.data
+}
+
+export const createNewComment = async (data) => {
+  const request = await axios.post(`${API_ROOT}/v1/comment`, data)
   return request.data
 }
