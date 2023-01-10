@@ -8,10 +8,10 @@ import CMT from "components/comment/CMT";
 
 function TaskModal(props) {
   const { show, task, toggleModal} = props
+  const cmt = task.comment
   const [status, SetStatus] = useState("")
-  const [cmt, setCmt] = useState([])
   const [cmtContent, setCmtContent] = useState('')
-
+  
   const onNewComment =  (e) => {
     setCmtContent(e.target.value)
   }
@@ -29,12 +29,8 @@ function TaskModal(props) {
 
     createNewComment(newComment)
       .then(comment => {
-        
-        let newCmt = [...cmt]
-        newCmt.push(comment)
-        console.log(newCmt)
-        setCmt(newCmt)
-        console.log(newCmt)
+        let newTask = cloneDeep(task)
+        newTask.comment.push(comment)
       })
       
   }
@@ -45,7 +41,6 @@ function TaskModal(props) {
     else if (index === 3) {SetStatus('Complete')}
     else if (index === 0) {SetStatus('')}
   }
-  console.log(cmt)
   return (
     <Modal
       {...props}
@@ -104,7 +99,7 @@ function TaskModal(props) {
           />
         </InputGroup>
         <Card class="form-cmt">
-          {cmt.filter(cmt => cmt.taskId === task._id).map((cmt, index) => <CMT key={index} cmt={cmt}/>)}
+          {cmt.map((cmt, index) => <CMT key={ index } cmt={cmt} />)}
         </Card>
       </Modal.Body>
         
@@ -112,7 +107,7 @@ function TaskModal(props) {
 
       <Modal.Footer>
         <Button variant="primary" onClick={toggleModal}>Enter</Button>{' '}
-        <Button variant="danger" onClick={toggleModal}>Close</Button>
+        <Button variant="danger" onClick={toggleModal}>Delete</Button>
       </Modal.Footer>
     </Modal>
   );

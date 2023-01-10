@@ -4,14 +4,13 @@ import { cloneDeep } from 'lodash'
 import "./List.css";
 
 import Task from 'components/Task/Task';
-import {Form, Button} from 'react-bootstrap'
+import {Form} from 'react-bootstrap'
 import {saveNewListTitle} from 'utilities/contentEditable'
 import {createNewTask, updateList} from 'actions/ApiCall'
 
 function List(props) {
 
   const { list, onUpdateListState } = props
-
   const task = list.tasks
   const [listTitle, setListTitle] = useState('')
   const [openNewTask, setOpenNewTask] = useState(false)
@@ -41,8 +40,7 @@ function List(props) {
     updateList(newList._id, newList)
       .then(updatedList => {
         onUpdateListState(updatedList)
-      })
-    
+      })  
   }
 
   const toggleNewTaskForm = () => {
@@ -67,7 +65,6 @@ function List(props) {
     createNewTask(newTaskToAdd)
       .then(task => {
         let newList = cloneDeep(list)
-        
         newList.tasks.push(task)
         toggleNewTaskForm()
         onUpdateListState(newList)

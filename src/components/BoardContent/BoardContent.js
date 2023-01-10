@@ -18,8 +18,6 @@ function BoardContent() {
     },
     []
   )
-
-
   useEffect(() => {
     const boardId = '6391cd5795920b972e1c6dc3'
     fetchBoardDetails(boardId)
